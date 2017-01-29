@@ -1,0 +1,18 @@
+top ->counter clockwise
+-tri1
+v v v 
+-tri2
+ v v v
+-single gap top
+ vvvvv
+-single gap top left
+v vvvv
+-single gap bot left
+vv vvv
+-single gap bot 
+vvv vv
+-single gap bot right
+vvvv v
+-single gap top right
+vvvvv 
+

@@ -1,0 +1,20 @@
+{[
+{"time": 	2	, "energy":	2},
+{"time": 	3	, "energy":	2},
+  {
+    "time": 4,
+    "energy": 1
+  },
+  {
+    "time": 5.4,
+    "energy": 1
+  },
+  {
+    "time": 5.8,
+    "energy": 1
+  },
+  {
+    "time": 6.8,
+    "energy": 1
+  }
+]}
