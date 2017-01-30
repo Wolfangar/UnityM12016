@@ -166,6 +166,7 @@ public class Spawner : MonoBehaviour {
         else //spectrumanalyzer
         {
             Debug.Log("SpectrumParty");
+            GetComponent<SpectrumAnalyzer>().analyze();
             listOnsets = GetComponent<SpectrumAnalyzer>().getListOnset();
             reduceNoise();
         }
@@ -187,6 +188,7 @@ public class Spawner : MonoBehaviour {
         generatePatterns();
         checkSpawn();
 
+        AudioSettings.outputSampleRate = theSong.clip.frequency;
         theSong.Play();
         theSong.timeSamples = 0;
     }
@@ -352,7 +354,7 @@ public class Spawner : MonoBehaviour {
         return current;
     }
 
-    float reflexTimeDivisor = 2.5f;
+    float reflexTimeDivisor = 2f;
 
     void pattern1()
     {
@@ -550,6 +552,10 @@ public class Spawner : MonoBehaviour {
 
             Debug.Log("next speed: " + (listPatterns[indexOfBlocks].onset.time) +" " + getTimeSong());
             changeSpeedCo = StartCoroutine(changeSpeed(listPatterns[indexOfBlocks].onset.time - getTimeSong()));
+        }
+        else
+        {
+            //GameObject.Find("WinText").SetActive(true);
         }
     }
 

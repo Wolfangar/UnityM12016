@@ -35,6 +35,15 @@ public class SpectrumAnalyzer : MonoBehaviour {
 
     // Use this for initialization
     void Awake () {
+        
+    }
+
+    public void analyze()
+    {
+        //if (!GetComponent<Spawner>().readJson)
+        //    return;
+
+
         source = GetComponents<AudioSource>()[0];
         audioAllChannelsSamples = new float[source.clip.samples * source.clip.channels];
         audioSamples = new float[source.clip.samples];
@@ -45,23 +54,21 @@ public class SpectrumAnalyzer : MonoBehaviour {
         Debug.Log("number samples: " + source.clip.samples + " allsampleslength: " + audioAllChannelsSamples.Length);
 
         //into mono
-        for(int i = 0; i < audioSamples.Length; i++)
+        for (int i = 0; i < audioSamples.Length; i++)
         {
             float sum = 0f;
-            for(int j = 0; j < source.clip.channels; j++)
+            for (int j = 0; j < source.clip.channels; j++)
             {
                 sum += audioAllChannelsSamples[i * source.clip.channels + j];
             }
             audioSamples[i] = sum / source.clip.channels;
         }
 
-
         AudioSettings.outputSampleRate = source.clip.frequency;
-
         fftThat();
 
 
-        source.Play();
+        //source.Play();
         /*
 
         float[] samples = new float[source.clip.samples * source.clip.channels];

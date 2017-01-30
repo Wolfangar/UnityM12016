@@ -7,6 +7,8 @@ public class Player : MonoBehaviour {
     [HideInInspector]
     public float distanceFromCenter;
 
+    public GameObject root;
+
 	// Use this for initialization
 	void Awake () {
         distanceFromCenter = (this.transform.position - Vector3.zero).magnitude;
@@ -38,7 +40,7 @@ public class Player : MonoBehaviour {
         }
     }
 
-    public float rotateTime = 0.1f;//player speed
+    private float rotateTime = 0.18f;//player speed
 
     IEnumerator rotateAngle(bool left)
     {
@@ -57,12 +59,12 @@ public class Player : MonoBehaviour {
         { // until we're done
             step += Time.deltaTime * rate; //increase the step
             smoothStep = Mathf.SmoothStep(0.0f, 1.0f, step); //get the smooth step
-            transform.RotateAround(Vector3.zero, Vector3.up, moveAngle * (smoothStep - lastStep));
+            transform.RotateAround(root.transform.position, root.transform.up, moveAngle * (smoothStep - lastStep));
             lastStep = smoothStep; //store the smooth step
             yield return null;
         }
         //finish any left-over
-        if (step > 1.0) transform.RotateAround(Vector3.zero, Vector3.up, moveAngle * (1.0f - lastStep));
+        if (step > 1.0) transform.RotateAround(root.transform.position, root.transform.up, moveAngle * (1.0f - lastStep));
 
         //instant turn :
         //transform.RotateAround(Vector3.zero, Vector3.up, moveAngle);

@@ -19,7 +19,7 @@ public class RotationController : MonoBehaviour {
         }
         */
 
-        theSong = GetComponent<Spawner>().theSong;
+        theSong = GetComponents<AudioSource>()[0];//;GetComponent<Spawner>().theSong;
 
         StartCoroutine(changeSideRotation());
 	}
@@ -61,7 +61,7 @@ public class RotationController : MonoBehaviour {
     {
         while(true)
         {
-            yield return new WaitForSeconds(Random.Range(2, 6));
+            yield return new WaitForSeconds(Random.Range(4, 12));
             clockWise = !clockWise;
         }
     }
